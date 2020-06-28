@@ -1,0 +1,26 @@
+#!/usr/bin/java --source 11
+
+import java.util.stream.IntStream;
+
+/**
+* https://openjdk.java.net/jeps/330
+*
+* This is a shebang file - https://openjdk.java.net/jeps/330#Shebang_files
+* #!<program> in the first line will execute the content of this file(in unix based os)
+* In order to do that, this file needs execution permission
+*
+* To give execution permission: $chmod a+x factorial-shebang
+* To execute the file: $./factorial-shebang 5
+*
+* It will compile and execute the main method from the first class in this file.
+* It will pass the parameters after the file names as main method's arguments
+*/
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        System.out.println(factorial(Integer.parseInt(args[0])));
+    }
+
+    private static int factorial(int number) {
+        return IntStream.rangeClosed(1, number).reduce(1, (x, y) -> x * y);
+    }
+}
